@@ -10,8 +10,9 @@ const invalidCredentialsStatus = 401;
 
 class deleteMethod {    
     
-    async deleteAPI(){        
-        const response = await axios.delete(`${envVariables.baseUrl}/customer/api/v1/delete/4`,
+    async deleteAPI(){    
+        try{
+            const response = await axios.delete(`${envVariables.baseUrl}/customer/api/v1/delete/${envVariables.id}`,
         {
             headers: {
                 'Content-Type': apptype,
@@ -19,8 +20,13 @@ class deleteMethod {
             }
         }
     ).then(res => res.data)
-        //await page.print(response);
+        
         return response;
+        }  catch(AxiousError){
+            return console.log('user is already deleted');
+    }        
+      
+        
     } 
 
     
