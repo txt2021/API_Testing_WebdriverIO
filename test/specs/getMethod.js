@@ -16,7 +16,7 @@ describe("Customer API Testing", async()=>{
         await getpage.checkPositiveStatus();
     });
 
-    xit("Should get Customer's info by ID", async () => {
+    it("Should get Customer's info by ID", async () => {
         await getpage.getUserByID();
         await getpage.checkUserID();
     });

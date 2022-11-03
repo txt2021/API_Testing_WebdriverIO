@@ -20,7 +20,8 @@ class getMethod {
         return response;
     }  
 
-    async getUserList(){        
+    async getUserList(){ 
+        try{       
         const response = await axios.get(`${envVariables.baseUrl}/customer/api/v1/list`,
             {
                 headers: {
@@ -33,9 +34,14 @@ class getMethod {
         envVariables.token = response.token; 
         await page.wrightInFile(tokenPath,envVariables);
         return response;
+
+    } catch(AxiousError){
+        return console.log('wrong request');
+    }   
     } 
     
-    async getUserByID(){        
+    async getUserByID(){  
+        try{      
         const response = await axios.get(`${envVariables.baseUrl}/customer/api/v1/get/101`,
             {
                 headers: {
@@ -45,7 +51,10 @@ class getMethod {
             }
         ).then(res => res.data);
         await page.print(response);
-        return response;       
+        return response;   
+        } catch(AxiousError){
+            return console.log('wrong user id');
+        }            
     } 
 
     async getUserByWrongID(){ 
