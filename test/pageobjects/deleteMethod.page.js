@@ -11,7 +11,7 @@ const invalidCredentialsStatus = 401;
 class deleteMethod {    
     
     async deleteAPI(){        
-        const response = await axios.delete(`${envVariables.baseUrl}/customer/api/v1/delete/${envVariables.id}`,
+        const response = await axios.delete(`${envVariables.baseUrl}/customer/api/v1/delete/4`,
         {
             headers: {
                 'Content-Type': apptype,
@@ -19,7 +19,7 @@ class deleteMethod {
             }
         }
     ).then(res => res.data)
-        await page.print(response);
+        //await page.print(response);
         return response;
     } 
 
